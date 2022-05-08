@@ -17,7 +17,8 @@ const getStaticProps: GetStaticProps<MainPageProps> = async () => {
   const { products } = await JSON.parse(response);
 
   return {
-    props: { products }
+    props: { products },
+    revalidate: 10
   };
 };
 
