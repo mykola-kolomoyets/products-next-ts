@@ -8,9 +8,8 @@ export type ProductListProps = {
 
 const ProductList: FC<ProductListProps> = ({ products }) => (
   <ul className={styles.productList}>
-    {products?.map((product) => (
-      <ProductItem key={product.id} {...product} />
-    ))}
+    {products?.length &&
+      products?.map((product) => <ProductItem key={product.id} {...product} />)}
   </ul>
 );
 
