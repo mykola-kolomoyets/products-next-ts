@@ -1,8 +1,7 @@
 import type { NextPage, GetStaticProps } from "next";
-import fs from "fs/promises";
-import path from "path";
 
 import ProductList, { ProductListProps } from "../components/product-list";
+import ProductsService from "../api/products";
 
 type MainPageProps = {} & ProductListProps;
 
@@ -11,10 +10,7 @@ const Home: NextPage<MainPageProps> = ({ products }) => {
 };
 
 const getStaticProps: GetStaticProps<MainPageProps> = async () => {
-  const dataPath = path.join(process.cwd(), "data", "data.json");
-
-  const response = await fs.readFile(dataPath, "utf-8");
-  const { products } = await JSON.parse(response);
+  const products = ProductsService.getProductList();
 
   return {
     props: { products },
