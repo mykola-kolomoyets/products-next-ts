@@ -1,4 +1,4 @@
-import { useRouter } from "next/router";
+import Link from "next/link";
 import { FC } from "react";
 import styles from "./product-item.styles.module.scss";
 
@@ -9,14 +9,10 @@ export type Product = {
 };
 
 const ProductItem: FC<Product> = ({ id, title, description }) => {
-  const router = useRouter();
-
-  const onClick = () => router.push(`/products/${id}`);
-
   return (
     <li className={styles.productItem}>
-      <h4 className={styles.productTitle} onClick={onClick}>
-        {title}
+      <h4 className={styles.productTitle}>
+        <Link href={`/products/${id}`}>{title}</Link>
       </h4>
     </li>
   );
