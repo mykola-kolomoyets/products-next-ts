@@ -1,20 +1,15 @@
 import type { NextPage, GetStaticProps } from "next";
 
-import ProductList, { ProductListProps } from "../components/product-list";
-import ProductsService from "../api/products";
-
-type MainPageProps = {} & ProductListProps;
-
-const Home: NextPage<MainPageProps> = ({ products }) => {
-  return <ProductList products={products} />;
+const Home: NextPage = () => {
+  return <></>;
 };
 
-const getStaticProps: GetStaticProps<MainPageProps> = async () => {
-  const products = ProductsService.getProductList();
-
+const getStaticProps: GetStaticProps = async () => {
   return {
-    props: { products },
-    revalidate: 10
+    props: {},
+    redirect: {
+      destination: "/products"
+    }
   };
 };
 
