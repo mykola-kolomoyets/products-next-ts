@@ -33,12 +33,21 @@ const getStaticProps: GetStaticProps<ProductViewProps> = async (context) => {
 };
 
 const getStaticPaths: GetStaticPaths = async () => {
+  const products = ProductsService.getProductList();
+
+  if (!products?.length) {
+    return {
+      paths: [],
+      fallback: false
+    };
+  }
+
+  const paths = products?.map(({ id }) => ({
+    params: { id }
+  }));
+
   return {
-    paths: [
-      { params: { id: "p1" } },
-      { params: { id: "p2" } },
-      { params: { id: "p3" } }
-    ],
+    paths,
     fallback: false
   };
 };
