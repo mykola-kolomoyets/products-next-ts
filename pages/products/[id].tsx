@@ -23,7 +23,7 @@ const ProductView: FC<ProductViewProps> = ({ product }) => {
 const getStaticProps: GetStaticProps<ProductViewProps> = async (context) => {
   const { params } = context;
 
-  const product = ProductsService.getProductById(params?.id as string);
+  const product = await ProductsService.getProductById(params?.id as string);
 
   if (!product) {
     return {
