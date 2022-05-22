@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 
-const DB_URL = 'https://next-ts-course-project-default-rtdb.firebaseio.com/sales.json';
+export const DB_URL = 'https://next-ts-course-project-default-rtdb.firebaseio.com/sales.json';
 
 export type Sale = {
     id?: string;
