@@ -8,6 +8,10 @@ type ProductViewProps = {
 };
 
 const ProductView: FC<ProductViewProps> = ({ product }) => {
+  if (!product) {
+    return <h1>Loading...</h1>;
+  }
+
   return (
     <section>
       <h1>{product.title}</h1>
@@ -46,9 +50,11 @@ const getStaticPaths: GetStaticPaths = async () => {
     params: { id }
   }));
 
+  const mostFrequentlyVisitedPages = paths.slice(0, 2);
+
   return {
-    paths,
-    fallback: false
+    paths: mostFrequentlyVisitedPages,
+    fallback: true
   };
 };
 
